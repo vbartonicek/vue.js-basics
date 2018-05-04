@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <product-list v-bind:products="products"></product-list>
+</div>
+
+<script type="text/javascript">
+  Vue.component('product-name', {
+    props: ['name'],
+    template: '<strong>{{name}}</strong>'
+  });
+
+  Vue.component('product-price', {
+    props: ['price'],
+    template: '<span>{{price}} EUR</span>'
+  });
+
+  Vue.component('product-item', {
+    props: ['product'],
+    template: '<li><product-name v-bind:name="product.name"></product-name> - <product-price v-bind:price= "product.price"></product-price></li>'
+  });
+
+  Vue.component('product-list', {
+    props: ['products'],
+    template: '<ol><product-item v-for="product in products" v-bind:product="product" v-bind:key="product.id"></product-item></ol>'
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      products: [{
+          id: 1,
+          name: "Laptop",
+          price: 3000
+        },
+        {
+          id: 2,
+          name: "Mouse",
+          price: 25
+        },
+        {
+          id: 3,
+          name: "Monitor",
+          price: 550
+        },
+      ],
+    },
+  });
+</script>

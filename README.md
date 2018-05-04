@@ -1,2 +1,2 @@
 # vue.js-basics
-My first Vue.js app
+Repository for learning Vue.js framework
